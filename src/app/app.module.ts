@@ -3,13 +3,42 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserModule } from './user/user.module';
+import { NavComponent } from './nav/nav.component';
+import { SharedModule } from './shared/shared.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'
+import { environment } from 'src/environments/environment';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ClipComponent } from './clip/clip.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ClipsListComponent } from './clips-list/clips-list.component';
+import { FbTimestampPipe } from './pipes/fb-timestamp.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    AboutComponent,
+    ClipComponent,
+    NotFoundComponent,
+    ClipsListComponent,
+    FbTimestampPipe
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
+    UserModule,
+    SharedModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
